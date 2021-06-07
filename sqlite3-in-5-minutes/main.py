@@ -27,13 +27,18 @@ cursor.execute(command2)
 # add to stores
 
 cursor.execute("INSERT INTO stores VALUES (21, 'Minneapolis, MN')")
+connection.commit() #https://stackoverflow.com/questions/3535532/python-doesnt-save-data-to-sqlite-db
 cursor.execute("INSERT INTO stores VALUES (95, 'Chicago, IL')")
+connection.commit()
 cursor.execute("INSERT INTO stores VALUES (64, 'Iowa City, IA')")
+connection.commit()
 
 # add to purchases
 
 cursor.execute("INSERT INTO purchases VALUES (54, 21, 15.49)")
+connection.commit()
 cursor.execute("INSERT INTO purchases VALUES (23, 64, 21.12)")
+connection.commit()
 
 # get results
 
@@ -44,6 +49,7 @@ print(results)
 # update
 
 cursor.execute("UPDATE purchases SET total_cost = 3.67 WHERE purchase_id = 54")
+connection.commit()
 cursor.execute("SELECT * FROM purchases")
 results = cursor.fetchall()
 print(results)
@@ -51,6 +57,9 @@ print(results)
 # delete
 
 cursor.execute("DELETE FROM purchases WHERE purchase_id = 54")
+connection.commit()
 cursor.execute("SELECT * FROM purchases")
 results = cursor.fetchall()
 print(results)
+
+#use https://sqlitebrowser.org/ to "see" the .db
